@@ -19,7 +19,7 @@ Name, Bangalore location, CS background, social links, and featured projects wer
 - https://github.com/parasmani-dev/hackoween (team contribution, engine API/run control)
 - https://github.com/guptavernit2-afk/Avertiq_ (ongoing research and application work)
 
-MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp, Rover Fetch, and Avertiq use labelled HTML/SVG editorial illustrations. SurakshaMitra is intentionally omitted pending a later content decision.
+MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp and Rover Fetch use labelled HTML/SVG editorial illustrations. Avertiq uses a generated 3D concept illustration of a chemical tanker, geographic context, and revision records; it is not an application screenshot or simulation output. Its prompt and asset provenance are in `docs/avertiq-illustration.md`. SurakshaMitra is intentionally omitted pending a later content decision.
 
 About uses Vernit's GitHub profile photo in a circular frame and a biography grounded in the GitHub profile. The photo is stored locally, with its framing controlled in CSS. Contact includes email, LinkedIn, and GitHub links verified against the profile's public Connect section on 15 November 2026. The email opens the visitor's mail app; the copy control appears when the Clipboard API is available and reports failures without removing the address. No message is submitted by the portfolio itself.
 
@@ -28,6 +28,8 @@ The hero pairs its blue interactive character with a warm pastel art card, proje
 Phone layouts use a compact two-column menu, shorter hero artwork and project previews, readable contribution panels, and 44–48px navigation/action targets. Project details open as a scrollable sheet with a persistent close button, background scroll locking, and focus restoration. The menu also closes when focus leaves it or the wordmark is selected. Responsive checks cover 320px, 390px and 430px phone widths, short landscape screens, and the desktop layout.
 
 The name uses title case (Vernit Gupta) in the header, hero introduction, and footer. On phones, About pairs the portrait and name in a compact profile card; skills use two-column icon tiles; Contact keeps a small postcard illustration alongside its note and provides larger email/copy controls and social link cards. The same pastel colours, rounded corners, and readable spacing carry through all sections.
+
+The mobile workbench combines Avertiq's current scope, technology tags, a 48px detail button, and the 3D preview in a warm card. Its preview also opens the project details. GSSoC contributions use pastel cards, readable change summaries, and 44px PR links; the four verified contribution descriptions and upstream evidence links remain intact.
 
 DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
 

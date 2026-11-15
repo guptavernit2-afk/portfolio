@@ -1,0 +1,12 @@
+# Avertiq project illustration
+
+Generated on 15 November 2026 with the built-in `image_gen` tool, using the `stylized-concept` use case. This is an editorial concept illustration of the project's transport-scenario and revision-history focus, not an application screenshot or a simulation result.
+
+- Published asset: `dist/assets/avertiq-scenario-3d.jpg` (1536 × 1024).
+- The original generated PNG is retained locally in `outputs/avertiq-scenario-3d-master.png` (ignored by Git).
+- JPEG quality 88 is used for web delivery; no crop or content edits were applied.
+- The site labels the artwork as a 3D concept illustration. Alt text describes the tanker, terrain map, and revision records.
+
+## Final generation prompt
+
+Use case: stylized-concept. Asset type: portfolio project-preview illustration for Avertiq, an ongoing chemical-transport incident training and research workspace with geographic context, saved scenario revisions, and traceable assessments. Create a premium, warmly lit 3D isometric clay-rendered miniature scene, landscape 3:2 composition. The main subject is a compact blue-cab chemical tanker truck with an ivory cylindrical tank, stationary on a winding road across a softly rounded raised terrain tile. The terrain is muted sage with subtle contour relief, a few simple rounded trees, and one cobalt location marker. Behind the truck, show three small dimensional cream document cards connected by a delicate line and nodes, suggesting saved revisions and an evidence trail; they have only abstract line marks, a small check symbol, and no readable text. One small peach scenario marker can connect the road location to the revision cards. Keep the truck and terrain large and recognisable at a 320px-wide mobile card. Crafted matte ceramic and soft clay materials, rounded edges, gentle bevels, rich ambient occlusion, soft studio shadows, professional product-illustration quality with a restrained playful touch. Palette: warm ivory background #f3efe5, sage #dce5ce, cobalt #3455e7, small peach #efc9aa and lilac #d8cdea accents. Balanced centered composition with generous but not excessive margins; all objects fully within the frame. Calm training-scenario illustration, not a real application screenshot or scientific simulation output. No explosions, smoke, hazardous plume, heat map, predicted zones, people, emergency vehicles, logos, title, letters, numbers, watermark, border, or UI frame.
