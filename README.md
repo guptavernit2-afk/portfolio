@@ -27,6 +27,8 @@ The hero pairs its blue interactive character with a warm pastel art card, proje
 
 Phone layouts use a compact two-column menu, shorter hero artwork and project previews, readable contribution panels, and 44–48px navigation/action targets. Project details open as a scrollable sheet with a persistent close button, background scroll locking, and focus restoration. The menu also closes when focus leaves it or the wordmark is selected. Responsive checks cover 320px, 390px and 430px phone widths, short landscape screens, and the desktop layout.
 
+The name uses title case (Vernit Gupta) in the header, hero introduction, and footer. On phones, About pairs the portrait and name in a compact profile card; skills use two-column icon tiles; Contact keeps a small postcard illustration alongside its note and provides larger email/copy controls and social link cards. The same pastel colours, rounded corners, and readable spacing carry through all sections.
+
 DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
 
 Project and contribution cards use one-time entrance animations and pointer hover effects. Reduced-motion preferences disable these effects, and content remains visible without JavaScript.
