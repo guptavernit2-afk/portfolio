@@ -68,6 +68,66 @@ document.querySelector('.dialog-close').addEventListener('click', () => dialog.c
 dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
 dialog.addEventListener('close', () => previousFocus?.focus({ preventScroll: true }));
 
+const header = document.querySelector('.site-header');
+const navigation = document.querySelector('#primary-navigation');
+const menuToggle = document.querySelector('.nav-toggle');
+if (header && navigation && menuToggle) {
+  const mobileNavigation = matchMedia('(max-width: 860px)');
+  const setMenuOpen = open => {
+    header.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.querySelector('span').textContent = open ? 'Close' : 'Menu';
+  };
+  header.classList.add('nav-ready');
+  menuToggle.hidden = false;
+  menuToggle.addEventListener('click', () => setMenuOpen(!header.classList.contains('is-open')));
+  navigation.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const wasOpen = header.classList.contains('is-open');
+    setMenuOpen(false);
+    if (wasOpen) {
+      const destination = document.getElementById(link.hash.slice(1));
+      if (destination) {
+        destination.tabIndex = -1;
+        requestAnimationFrame(() => destination.focus({ preventScroll: true }));
+      }
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('is-open')) {
+      setMenuOpen(false);
+      menuToggle.focus({ preventScroll: true });
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) setMenuOpen(false);
+  });
+  mobileNavigation.addEventListener('change', () => setMenuOpen(false));
+  const navSections = [...navigation.querySelectorAll('a[href^="#"]')]
+    .map(link => ({ link, section: document.getElementById(link.hash.slice(1)) }))
+    .filter(item => item.section);
+  let scrollFrame;
+  function updateNavigation() {
+    scrollFrame = undefined;
+    const marker = header.getBoundingClientRect().bottom + 70;
+    let current;
+    navSections.forEach(item => {
+      if (item.section.getBoundingClientRect().top <= marker) current = item.link;
+    });
+    navSections.forEach(({ link }) => {
+      if (link === current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  const scheduleNavigation = () => {
+    if (scrollFrame === undefined) scrollFrame = requestAnimationFrame(updateNavigation);
+  };
+  addEventListener('scroll', scheduleNavigation, { passive: true });
+  addEventListener('resize', scheduleNavigation);
+  updateNavigation();
+}
+
 const mascot = document.querySelector('#mascot');
 const hint = document.querySelector('#mascot-hint');
 const messages = ['curiosity looks good on you.', 'a little joy, delivered.', 'okay, back to building :)', 'you made my pixels happy.'];

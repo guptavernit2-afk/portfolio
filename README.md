@@ -23,6 +23,8 @@ MediWatch uses the actual screenshot from its repository's `docs/images/overview
 
 About uses a decorative initials card and biography grounded in the GitHub profile. Contact includes email, LinkedIn, and GitHub links verified against the profile's public Connect section on 15 November 2026. The email opens the visitor's mail app; the copy control appears when the Clipboard API is available and reports failures without removing the address. No message is submitted by the portfolio itself.
 
+The hero pairs its blue interactive character with a warm pastel art card, project and GitHub links, and an Avertiq workbench shortcut. The sticky navigation highlights the current section. On small screens it becomes a coloured disclosure menu with Escape dismissal, anchor focus handling, and an always-visible link fallback when JavaScript is unavailable.
+
 DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
 
 Project and contribution cards use one-time entrance animations and pointer hover effects. Reduced-motion preferences disable these effects, and content remains visible without JavaScript.
@@ -42,9 +44,9 @@ Rover Fetch role evidence: merged PRs [7](https://github.com/parasmani-dev/hacko
 
 - `dist/index.html`: layout, biography, project previews, social links.
 - `dist/style.css`: colours, typography, responsive layout, motion.
-- `dist/content.css`: project/contribution cards, work-in-progress panel, grouped toolkit, profile card and contact postcard.
+- `dist/content.css`: project/contribution cards, work-in-progress panel, grouped toolkit, profile card, contact postcard, hero and navigation refinements.
 - `dist/assets/`: locally served project imagery.
-- `dist/script.js`: project details, dialog behavior, mascot interaction, India time.
+- `dist/script.js`: project details, dialog behavior, mascot interaction, mobile navigation, section highlighting, email copy, India time.
 - `.openai/hosting.json`: private Sites identity and static output.
 
 DM Sans loads from Google Fonts, with Arial as an offline fallback. Illustrations and interactive features do not require external libraries. Dialogs support Escape, backdrop dismissal, and focus restoration; reduced-motion settings suppress decorative animation.
