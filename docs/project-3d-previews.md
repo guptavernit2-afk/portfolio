@@ -1,5 +1,7 @@
 # Project 3D previews
 
+Historical record: superseded by authentic project screenshots on 15 November 2026. These generated assets have been removed from `dist/`; local copies remain in ignored `outputs/`. See [current screenshots](project-screenshots.md).
+
 Generated on 15 November 2026 with the built-in `image_gen` tool, using the `stylized-concept` use case. The palette and clay-rendering direction match the existing Avertiq illustration. These are editorial concept illustrations, not application screenshots or simulation captures.
 
 ## Assets and delivery

@@ -25,10 +25,26 @@ button.text-link { background: transparent; padding-inline: 0; }
 .card-number { white-space: nowrap; opacity: .8; }
 .project-card .project-preview { border: 0; border-radius: 10px; margin: 15px 15px 0; width: calc(100% - 30px); height: 275px; flex-shrink: 0; background: var(--card-art); background-image: radial-gradient(#24252113 .65px, transparent .65px); background-size: 14px 14px; }
 .project-card .project-preview:focus-visible { outline-offset: 2px; }
-.project-card .project-preview.concept-preview { display: grid; grid-template-rows: minmax(0,1fr) auto; padding: 0; border: 1px solid #e0d2c0; background: #f5e9dc; overflow: hidden; text-align: left; }
-.concept-art { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; }
-.concept-caption { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 13px; border-top: 1px solid #e2d7c7; background: #f6f1e7; color: var(--card-ink); font: 8px/1.5 var(--mono); letter-spacing: .5px; }
-.concept-caption > span:last-child { font: 17px/1 var(--sans); }
+.project-card .project-preview.screenshot-preview { display: flex; flex-direction: column; height: auto; padding: 0; border: 1px solid #24252120; background: #fff; overflow: hidden; text-align: left; box-shadow: 0 5px 16px #24252107; }
+.screenshot-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 12px 14px; border-bottom: 1px solid #e9e9e4; background: #fdfdfb; color: #6c7168; font: 10px/1.4 var(--sans); }
+.screenshot-brand { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; color: #333a32; font-size: 12px; font-weight: 650; letter-spacing: -.2px; }
+.screenshot-brand::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--card-ink,#22736b); }
+.screenshot-bar > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.screenshot-bar > span:last-child > span { margin-left: 5px; }
+.workspace-capture { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; }
+.screenshot-caption { display: flex; align-items: center; justify-content: space-between; gap: 9px; width: 100%; padding: 11px 14px; border-top: 1px solid #e9e9e4; background: #fdfdfb; color: #454d43; font: 10px/1.5 var(--sans); }
+.screenshot-caption > span:last-child { color: #6d7369; font-size: 9px; }
+.map-credit { margin: 8px 2px 0; color: #697163; font-size: 9px; line-height: 1.7; }
+.map-credit a { text-decoration: underline; text-underline-offset: 2px; }
+.dialog-preview { overflow: hidden; margin: 23px 0; border: 1px solid #dce0d5; border-radius: 10px; background: #fff; }
+.dialog-preview img { display: block; width: 100%; height: auto; }
+.dialog-preview figcaption { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 15px; padding: 9px 12px; border-top: 1px solid #e9e9e4; color: #697163; font: 10px/1.6 var(--sans); }
+.dialog-preview figcaption a { display: inline-flex; align-items: center; min-height: 44px; color: var(--blue); font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+@media(max-width:400px) {
+  .screenshot-bar { padding: 10px; gap: 8px; font-size: 9px; }
+  .screenshot-brand { font-size: 11px; }
+  .screenshot-caption { padding: 10px; align-items: flex-start; flex-direction: column; gap: 2px; }
+}
 .project-card .app-window { top: 24px; width: 86%; left: 7%; height: 220px; border-radius: 8px; box-shadow: 0 15px 23px -15px #42305160; }
 .project-card .catchup-window { transform: rotate(-3deg); }
 .project-card .catchup-app { grid-template-columns: 87px 1fr; }
@@ -79,7 +95,7 @@ button.text-link { background: transparent; padding-inline: 0; }
 .building-copy .scope-note { font-size: 10px; line-height: 1.6; color: #848979; margin-top: 10px; }
 .avertiq-visual { position: relative; padding: 0; margin: 0; min-width: 0; }
 .avertiq-scene { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid #dfd3bf; border-radius: 18px; background: #f5e9dc; text-align: left; }
-.avertiq-scene img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; }
+.avertiq-scene img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: contain; }
 .scene-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: #f6f1e7; border-top: 1px solid #e1d9c9; color: #716651; font: 8px/1.5 var(--mono); letter-spacing: .6px; }
 .scene-caption > span:last-child { font: 18px/1 var(--sans); color: var(--blue); }
 .avertiq-scene:focus-visible { outline-offset: 4px; }
@@ -799,13 +815,7 @@ html:has(.project-dialog[open]) { overflow: hidden; }
   .footer .wordmark { font-size: 20px; }
 }
 
-/* A dimensional workbench and contribution cards that are easy to scan on phones. */
-@media(hover:hover) and (prefers-reduced-motion:no-preference) {
-  .avertiq-scene img { transition: transform .35s ease; }
-  .avertiq-scene:hover img { transform: scale(1.025); }
-  .concept-art { transition: transform .35s ease; }
-  .concept-preview:hover .concept-art { transform: scale(1.025); }
-}
+/* The workbench and contribution cards stay easy to scan on phones. */
 @media(max-width:760px) {
   .avertiq-preview { padding: 0; }
   .avertiq-preview .revision-card { margin: 12px 0 0; padding: 14px; gap: 10px; }

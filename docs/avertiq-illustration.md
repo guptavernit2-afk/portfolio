@@ -1,5 +1,7 @@
 # Avertiq project illustration
 
+Historical record: replaced by an authentic dashboard screenshot on 15 November 2026. This generated asset is no longer shipped in `dist/`. See [current screenshots](project-screenshots.md).
+
 Generated on 15 November 2026 with the built-in `image_gen` tool, using the `stylized-concept` use case. This is an editorial concept illustration of the project's transport-scenario and revision-history focus, not an application screenshot or a simulation result.
 
 - Published asset: `dist/assets/avertiq-scenario-3d.jpg` (1536 × 1024).
