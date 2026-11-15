@@ -152,10 +152,82 @@ button.text-link { background: transparent; padding-inline: 0; }
 
 .project-dialog { border-radius: 18px; }
 
+/* A personal profile and a postcard to close the page. */
+.about-refresh { padding-block: 76px 30px; border: 0; }
+.about-refresh .section-heading { align-items: center; margin-bottom: 37px; }
+.about-margin-note { font-size: 17px; color: #7d786b; transform: rotate(5deg); padding-right: 30px; }
+.about-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 57px; align-items: stretch; }
+.about-profile { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 29px 33px 0; border: 1px solid var(--card-edge); border-radius: 18px; background: var(--card-bg); }
+.profile-topline { display: flex; justify-content: space-between; gap: 12px; font: 9px/1.5 var(--mono); letter-spacing: .7px; color: var(--card-ink); }
+.profile-portrait { position: relative; height: 183px; display: grid; place-items: center; margin-top: 23px; background-image: radial-gradient(#8f7bac38 .7px, transparent .7px); background-size: 16px 16px; }
+.profile-monogram { display: grid; place-content: center; width: 151px; height: 151px; border-radius: 50%; background: #f9f7ef; color: var(--blue); border: 1px solid #d5cce2; font: italic 104px/1 var(--serif); letter-spacing: -11px; transform: rotate(-7deg); padding-right: 12px; position: relative; }
+.profile-monogram > span { position: absolute; right: 11px; bottom: 13px; font-size: 62px; }
+.profile-star { position: absolute; right: 25px; top: 6px; font-size: 59px; color: #9378b4; transform: rotate(10deg); }
+.profile-loop { position: absolute; width: 105px; left: 0; bottom: -6px; color: #a48bb9; transform: rotate(-9deg); }
+.about-profile h3 { font-size: 32px; font-weight: 600; letter-spacing: -1.1px; margin-top: 26px; }
+.profile-description { font-size: 14px; line-height: 1.75; color: #665972; margin-top: 10px; }
+.profile-sticker { align-self: flex-start; display: flex; align-items: center; gap: 10px; margin-block: 26px 29px; background: #f4e2bd; color: #7d653c; border: 1px solid #d8bd8c; border-radius: 5px; padding: 9px 15px; transform: rotate(-5deg); box-shadow: 2px 3px 0 #c7b79e35; font: 9px/1.4 var(--mono); letter-spacing: .3px; }
+.profile-sticker > span:first-child { font-size: 29px; }
+.profile-sticker strong { font-size: 13px; font-weight: 550; }
+.profile-location { display: flex; align-items: center; gap: 8px; padding-block: 20px; border-top: 1px solid var(--card-edge); margin-top: auto; font-size: 11px; color: var(--card-ink); }
+.profile-location svg { width: 16px; height: 16px; }
+.profile-coordinate { margin-left: auto; font-size: 20px; }
+.about-story { padding-block: 9px; }
+.about-story-lead { font-size: 24px; line-height: 1.4; letter-spacing: -.6px; }
+.about-story-lead .serif { letter-spacing: -.6px; color: #736480; }
+.about-story > p:not(.about-story-lead) { font-size: 14px; color: #626859; line-height: 1.85; margin-top: 19px; }
+.about-habits { display: grid; gap: 10px; padding: 0; margin: 24px 0 16px; list-style: none; }
+.about-habits li { display: flex; align-items: flex-start; gap: 13px; padding: 14px 16px; background: var(--card-bg); border: 1px solid var(--card-edge); border-radius: 10px; }
+.habit-icon { width: 32px; height: 32px; display: grid; place-items: center; background: #fff6; border-radius: 7px; color: var(--card-ink); flex-shrink: 0; }
+.habit-icon svg { width: 20px; height: 20px; }
+.about-habits h3 { font-size: 13px; font-weight: 600; line-height: 1.4; }
+.about-habits p { color: #5f6656; font-size: 12px; line-height: 1.6; margin-top: 4px; }
+.about-connect { font-size: 12px; gap: 12px; }
+.contact-section.contact-refresh { padding-block: 22px 28px; border: 0; }
+.contact-invitation { padding: 36px 40px 0; background: var(--card-bg); border: 1px solid var(--card-edge); border-radius: 19px; }
+.contact-invitation > .eyebrow { color: var(--card-ink); font-size: 9px; letter-spacing: 1px; }
+.invitation-layout { display: grid; grid-template-columns: 1fr 255px; gap: 27px; align-items: center; padding-block: 27px 29px; }
+.invitation-copy h2 { font-size: clamp(36px,4.2vw,60px); line-height: 1.15; letter-spacing: -2.5px; }
+.invitation-copy h2 .serif { display: inline-block; white-space: nowrap; letter-spacing: -2px; }
+.invitation-copy > p { font-size: 13px; line-height: 1.85; color: #59677b; margin-top: 23px; max-width: 570px; }
+.hello-postcard { position: relative; width: 100%; max-width: 290px; justify-self: center; padding-top: 15px; }
+.postcard-note { display: block; color: #65799c; font-size: 14px; text-align: center; transform: rotate(6deg); }
+.postcard-art { width: 100%; height: auto; margin-top: 5px; }
+.hello-letter { transition: transform .4s ease; }
+.invitation-footnote { display: flex; align-items: center; gap: 9px; padding-block: 17px; border-top: 1px solid var(--card-edge); color: #5c6c86; font: italic 13px/1.6 var(--serif); }
+.invitation-footnote > span { font: 20px/1 var(--sans); }
+.contact-methods { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 17px; margin-top: 18px; }
+.contact-route { min-width: 0; padding: 24px 25px 22px; background: var(--card-bg); border: 1px solid var(--card-edge); border-radius: 14px; color: var(--ink); }
+.route-heading { display: flex; align-items: center; justify-content: space-between; gap: 13px; margin-bottom: 21px; }
+.route-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid #ffffff80; background: #fff6; color: var(--card-ink); }
+.route-icon > svg { width: 23px; height: 23px; }
+.route-icon > img { display: block; width: 24px; height: 24px; }
+.route-heading > svg { width: 18px; height: 18px; color: var(--card-ink); transition: transform .25s; }
+.route-label { font: 8px/1.5 var(--mono); letter-spacing: .6px; color: var(--card-ink); }
+.route-icon.linkedin-mark { font: 700 25px/1 Arial,sans-serif; letter-spacing: -1px; }
+.contact-route h3 { font-size: 21px; font-weight: 550; line-height: 1.3; letter-spacing: -.6px; }
+.email-address { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; color: #7a513b; margin-top: 11px; padding-block: 4px; }
+.email-address > svg { width: 14px; height: 14px; flex-shrink: 0; }
+.email-address:hover { text-decoration: underline; text-underline-offset: 4px; }
+.email-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 15px; }
+.copy-email { background: #fff7; border: 1px solid var(--card-edge); border-radius: 6px; padding: 8px 10px; align-items: center; gap: 6px; font-size: 10px; color: #80583c; }
+.copy-email:not([hidden]) { display: inline-flex; }
+.copy-email svg { width: 13px; height: 13px; }
+.copy-email:hover { background: #fff; }
+.copy-status { color: #75523c; font-size: 10px; line-height: 1.5; }
+.route-link { display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
+.route-link > p { font-size: 12px; line-height: 1.7; color: #636254; margin-top: 8px; margin-bottom: 20px; }
+.route-destination { display: block; font-size: 11px; font-weight: 550; color: var(--card-ink); margin-top: auto; }
+.contact-signoff { display: flex; justify-content: center; align-items: center; gap: 12px; text-align: center; font-size: 14px; line-height: 1.6; color: #7d806d; margin-top: 27px; }
+.contact-signoff > span { color: #acb784; font-style: normal; font-family: var(--sans); font-size: 22px; }
+
 /* One entrance per card. Content stays visible even if JavaScript fails. */
 @keyframes card-arrive { from { opacity: .3; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .card-entering { animation: card-arrive .6s cubic-bezier(.2,.7,.2,1) both; }
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .contact-invitation:hover .hello-letter { transform: translateY(-7px); }
+  .route-link:hover { transform: translateY(-4px); box-shadow: 0 9px 20px -14px #3c42394d; }
+  .route-link:hover .route-heading > svg { transform: translate(2px,-2px); }
   .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px -17px #35312550; }
   .project-card .project-preview:hover .app-window,.project-card .project-preview:hover .project-screenshot { transform: rotate(0deg) translateY(-4px); }
   .project-preview:hover .project-doodle { transform: rotate(-10deg) scale(1.08); }
@@ -165,6 +237,18 @@ button.text-link { background: transparent; padding-inline: 0; }
   .skill-list li:hover img,.skill-list li:hover svg { transform: rotate(-8deg) translateY(-2px); }
 }
 @media(max-width:1100px) {
+  .about-layout { gap: 35px; grid-template-columns: .9fr 1.1fr; }
+  .about-profile { padding-inline: 26px; }
+  .about-profile h3 { font-size: 29px; }
+  .about-story-lead { font-size: 22px; }
+  .about-story > p:not(.about-story-lead) { font-size: 13px; }
+  .invitation-layout { grid-template-columns: 1fr 205px; gap: 20px; }
+  .contact-invitation { padding-inline: 30px; }
+  .invitation-copy h2 { font-size: 43px; }
+  .contact-methods { grid-template-columns: 1.25fr 1fr 1fr; gap: 13px; }
+  .contact-route { padding: 22px 18px; }
+  .contact-route h3 { font-size: 19px; }
+  .email-address { font-size: 12px; gap: 6px; }
   .header nav { gap: 23px; } .wordmark { font-size: 26px; }
   .project-card .catchup-main h3 { font-size: 13px; }
   .project-card-body { padding-inline: 22px; } .card-topline { padding-inline: 22px; }
@@ -176,6 +260,43 @@ button.text-link { background: transparent; padding-inline: 0; }
   .toolkit-section h2 { font-size: 32px; }
 }
 @media(max-width:760px) {
+  .about-refresh { padding-block: 49px 8px; }
+  .about-margin-note { display: none; }
+  .about-layout { grid-template-columns: 1fr; gap: 26px; }
+  .about-profile { padding: 24px 26px 0; }
+  .profile-portrait { height: 162px; margin-top: 16px; }
+  .profile-monogram { width: 140px; height: 140px; font-size: 96px; }
+  .profile-star { right: 14%; top: 5px; font-size: 50px; }
+  .profile-loop { left: 8%; width: 92px; }
+  .about-profile h3 { margin-top: 18px; }
+  .profile-sticker { margin: 0 0 23px; }
+  .profile-description { font-size: 13px; margin-bottom: 23px; }
+  .profile-location { padding-block: 17px; }
+  .about-story-lead { font-size: 23px; }
+  .about-story > p:not(.about-story-lead) { font-size: 13px; }
+  .about-habits { gap: 11px; }
+  .about-habits li { padding: 14px; }
+  .about-habits p { font-size: 11px; }
+  .contact-section.contact-refresh { padding-block: 7px 16px; }
+  .contact-invitation { padding: 26px 25px 0; }
+  .contact-invitation > .eyebrow { font-size: 8px; line-height: 1.7; }
+  .invitation-layout { grid-template-columns: 1fr; gap: 15px; padding-block: 24px 15px; }
+  .invitation-copy h2 { font-size: 39px; letter-spacing: -1.8px; }
+  .invitation-copy h2 .serif { letter-spacing: -1.7px; }
+  .invitation-copy > p { font-size: 12px; margin-top: 18px; }
+  .invitation-copy > p br { display: none; }
+  .hello-postcard { max-width: 230px; padding-top: 5px; }
+  .postcard-note { font-size: 13px; }
+  .invitation-footnote { font-size: 11px; align-items: flex-start; }
+  .contact-methods { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .contact-email { grid-column: 1/-1; }
+  .contact-route { padding: 23px; }
+  .contact-email .route-heading { margin-bottom: 15px; }
+  .contact-email h3 { font-size: 23px; }
+  .email-address { font-size: 15px; }
+  .route-link { padding: 22px 19px; }
+  .route-link > p { font-size: 11px; }
+  .contact-signoff { font-size: 12px; gap: 10px; }
   .header nav { gap: 17px; } .header nav a.nav-gssoc { display: inline-block; }
   .header nav a.nav-about { display: none; } .header nav a > span { display: none; }
   .header nav .nav-contact span { display: inline; }
@@ -218,6 +339,19 @@ button.text-link { background: transparent; padding-inline: 0; }
   .footer .wordmark { font-size: 22px; } .footer .wordmark > .wordmark-spark { font-size: 24px; }
 }
 @media(max-width:540px) {
+  .profile-description { margin-bottom: 21px; }
+  .profile-star { right: 4%; }
+  .profile-loop { left: 0; }
+  .about-story-lead { font-size: 22px; }
+  .about-story-lead br { display: none; }
+  .invitation-copy h2 { font-size: clamp(29px,8.5vw,39px); }
+  .contact-route { padding-inline: 21px; }
+  .contact-methods { grid-template-columns: 1fr; }
+  .route-link { position: relative; padding-left: 79px; min-height: 140px; }
+  .route-link .route-heading { position: absolute; top: 23px; left: 21px; right: 21px; margin: 0; }
+  .route-link h3,.route-link > p,.route-destination { padding-right: 22px; }
+  .route-link .route-heading > svg { align-self: start; width: 15px; }
+  .route-link > p { margin-bottom: 13px; }
   .header .wordmark-name { font-size: 23px; line-height: .88; letter-spacing: -1.1px; }
   .header .wordmark-name > span { display: block; }
   .header .wordmark-spark { font-size: 26px; margin-left: 0; }
@@ -248,6 +382,16 @@ button.text-link { background: transparent; padding-inline: 0; }
   .skill-list { gap: 8px; } .skill-list li { font-size: 11px; padding: 9px 10px; gap: 7px; }
 }
 @media(max-width:370px) {
+  .about-profile { padding-inline: 21px; }
+  .profile-topline { font-size: 8px; }
+  .about-profile h3 { font-size: 28px; }
+  .about-connect { font-size: 11px; gap: 8px; }
+  .contact-invitation { padding-inline: 20px; }
+  .invitation-copy h2 { font-size: 30px; letter-spacing: -1.6px; }
+  .invitation-copy h2 .serif { letter-spacing: -1.4px; }
+  .email-address { font-size: 13px; }
+  .route-link { padding-left: 73px; }
+  .route-link h3 { font-size: 19px; }
   .hero h1 { font-size: clamp(30px,10vw,37px); letter-spacing: -2px; }
   .header nav { gap: 11px; font-size: 10px; } .header .nav-contact { padding: 8px 9px; }
   .header .wordmark-name { font-size: 21px; } .header .wordmark-spark { font-size: 23px; }

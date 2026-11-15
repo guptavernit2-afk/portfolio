@@ -19,7 +19,9 @@ Name, Bangalore location, CS background, social links, and featured projects wer
 - https://github.com/parasmani-dev/hackoween (team contribution, engine API/run control)
 - https://github.com/guptavernit2-afk/Avertiq_ (ongoing research and application work)
 
-MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp, Rover Fetch, and Avertiq use labelled HTML/SVG editorial illustrations. LinkedIn is the contact destination because an email address was not supplied. SurakshaMitra is intentionally omitted pending a later content decision.
+MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp, Rover Fetch, and Avertiq use labelled HTML/SVG editorial illustrations. SurakshaMitra is intentionally omitted pending a later content decision.
+
+About uses a decorative initials card and biography grounded in the GitHub profile. Contact includes email, LinkedIn, and GitHub links verified against the profile's public Connect section on 15 November 2026. The email opens the visitor's mail app; the copy control appears when the Clipboard API is available and reports failures without removing the address. No message is submitted by the portfolio itself.
 
 DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
 
@@ -40,7 +42,7 @@ Rover Fetch role evidence: merged PRs [7](https://github.com/parasmani-dev/hacko
 
 - `dist/index.html`: layout, biography, project previews, social links.
 - `dist/style.css`: colours, typography, responsive layout, motion.
-- `dist/content.css`: project/contribution cards, work-in-progress panel and grouped toolkit.
+- `dist/content.css`: project/contribution cards, work-in-progress panel, grouped toolkit, profile card and contact postcard.
 - `dist/assets/`: locally served project imagery.
 - `dist/script.js`: project details, dialog behavior, mascot interaction, India time.
 - `.openai/hosting.json`: private Sites identity and static output.

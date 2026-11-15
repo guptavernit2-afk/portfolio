@@ -98,6 +98,34 @@ function updateTime() { document.querySelector('#local-time').textContent = new 
 updateTime();
 setInterval(updateTime, 60000);
 
+const copyEmailButton = document.querySelector('#copy-email');
+const contactEmail = document.querySelector('#contact-email');
+const copyStatus = document.querySelector('#copy-status');
+if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeText) {
+  copyEmailButton.hidden = false;
+  let copyStatusTimeout;
+  copyEmailButton.addEventListener('click', async () => {
+    clearTimeout(copyStatusTimeout);
+    copyStatus.textContent = '';
+    copyEmailButton.disabled = true;
+    copyEmailButton.querySelector('span').textContent = 'Copying…';
+    try {
+      await navigator.clipboard.writeText(contactEmail.getAttribute('href').slice('mailto:'.length));
+      copyStatus.textContent = 'Copied. Say hello!';
+      copyEmailButton.querySelector('span').textContent = 'Copied ✓';
+    } catch {
+      copyStatus.textContent = 'Couldn’t copy. Select the email address above.';
+      copyEmailButton.querySelector('span').textContent = 'Copy email';
+    } finally {
+      copyEmailButton.disabled = false;
+    }
+    copyStatusTimeout = setTimeout(() => {
+      copyStatus.textContent = '';
+      copyEmailButton.querySelector('span').textContent = 'Copy email';
+    }, 6000);
+  });
+}
+
 // A one-time entrance, with no hidden-content dependency on JavaScript.
 if ('IntersectionObserver' in window && !reduceMotion.matches) {
   const cardObserver = new IntersectionObserver(entries => {
