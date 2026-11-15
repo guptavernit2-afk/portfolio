@@ -9,8 +9,20 @@ const projects = {
     live: 'https://catchup-workspace.vercel.app/', repo: 'https://github.com/guptavernit2-afk/CatchUp',
     note: 'The portfolio illustration is a stylized preview. Visit the live app to explore the actual workspace.'
   },
+  descent: {
+    number: '02', category: 'INTERACTIVE LEARNING', name: 'DescentLab',
+    lead: 'See every step. Understand every optimizer.',
+    description: 'A browser-based educational platform for understanding gradient-based optimization. Evolved from my first-year simulator into an interactive laboratory with guided lessons, model fitting, and repeatable experiments.',
+    stack: 'React · TypeScript · Canvas 2D · Vite · Vitest',
+    role: 'Personal project · Numerical engine & learning experience',
+    features: ['Developed a testable numerical engine for six optimizers, with shared seeded noise, update snapshots, and explicit convergence or divergence handling.', 'Built interactive loss surfaces, contour views, playback, and diagnostics that read from the same experiment results.', 'Added guided lessons, linear-regression model fitting, learning-rate studies, and local experiment saving with share links and exports.'],
+    live: 'https://descent-lab.vercel.app/',
+    repo: 'https://github.com/guptavernit2-afk/descent-lab',
+    evidence: [{label: 'Architecture & engine', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/architecture.md'}, {label: 'From first-year project to platform', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/project-notes.md'}],
+    note: 'The card shows the actual application. These are educational two-parameter experiments, not neural-network training benchmarks or a universal ranking of optimizers.'
+  },
   mediwatch: {
-    number: '02', category: 'BACKEND & DATA', name: 'MediWatch',
+    number: '03', category: 'BACKEND & DATA', name: 'MediWatch',
     lead: 'Every signal. A clearer picture.',
     description: 'An educational patient-monitoring workspace that brings vital trends, persistent history, and reviewable alerts into one readable interface. Built around a FastAPI backend and SQLite storage.',
     stack: 'Python · FastAPI · SQLite · JavaScript', role: 'Personal project · Backend & application development',
@@ -20,7 +32,7 @@ const projects = {
     note: 'Educational demonstration with fictional records, not a medical device. The hosted demo uses ephemeral storage; persistence across redeployments is not guaranteed.'
   },
   rover: {
-    number: '03', category: 'TEAM PROJECT', name: 'Rover Fetch',
+    number: '04', category: 'TEAM PROJECT', name: 'Rover Fetch',
     lead: 'Reliable control behind a rover simulation.',
     description: 'A team hackathon project, hosted in the hackoween repository, that connects a rover simulator with an agent and run controls. My work focused on the engine boundary: how actions run, fail, recover, and finish.',
     stack: 'Python · HTTP APIs · Webots integration', role: 'Team contributor · Engine API & run control',
@@ -85,3 +97,23 @@ document.querySelector('#year').textContent = new Intl.DateTimeFormat('en', { ye
 function updateTime() { document.querySelector('#local-time').textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' }).format(new Date()) + ' IST'; }
 updateTime();
 setInterval(updateTime, 60000);
+
+// A one-time entrance, with no hidden-content dependency on JavaScript.
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const card = entry.target;
+      card.classList.add('card-entering');
+      card.addEventListener('animationend', () => card.classList.remove('card-entering'), { once: true });
+      cardObserver.unobserve(card);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('[data-reveal]').forEach(card => cardObserver.observe(card));
+  reduceMotion.addEventListener('change', event => {
+    if (event.matches) {
+      cardObserver.disconnect();
+      document.querySelectorAll('.card-entering').forEach(card => card.classList.remove('card-entering'));
+    }
+  });
+}

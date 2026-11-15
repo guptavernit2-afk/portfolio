@@ -1,6 +1,6 @@
-# Vernit — warm portfolio concept
+# Vernit Gupta — portfolio
 
-An independent, responsive portfolio direction. The existing portfolio in the parent directory is unchanged.
+A warm, minimal portfolio with colourful project cards, GSSoC contribution stories, and a little play. Live at https://vernit-portfolio.vercel.app/.
 
 Run `npm run dev` in this folder and open http://127.0.0.1:4175. The static site is in `dist/`; no dependency installation or build is needed. `npm run check` validates JavaScript syntax.
 
@@ -14,11 +14,16 @@ Name, Bangalore location, CS background, social links, and featured projects wer
 
 - https://github.com/guptavernit2-afk
 - https://github.com/guptavernit2-afk/CatchUp
+- https://github.com/guptavernit2-afk/descent-lab
 - https://github.com/guptavernit2-afk/MediWatch
 - https://github.com/parasmani-dev/hackoween (team contribution, engine API/run control)
 - https://github.com/guptavernit2-afk/Avertiq_ (ongoing research and application work)
 
 MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp, Rover Fetch, and Avertiq use labelled HTML/SVG editorial illustrations. LinkedIn is the contact destination because an email address was not supplied. SurakshaMitra is intentionally omitted pending a later content decision.
+
+DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
+
+Project and contribution cards use one-time entrance animations and pointer hover effects. Reduced-motion preferences disable these effects, and content remains visible without JavaScript.
 
 ### GSSoC contribution evidence
 
