@@ -190,6 +190,116 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
   });
 }
 
+// Keep selected-work motion isolated from the rest of the page.
+(() => {
+  const stack = document.querySelector('#work .project-stack');
+  if (!stack) return;
+  const steps = [...stack.querySelectorAll('.project-step')];
+  const cards = steps.map(step => step.querySelector('.project-card'));
+  const desktop = matchMedia('(min-width: 980px)');
+  const revealed = new WeakSet();
+  let enabled = false;
+  let measureFrame;
+  let motionFrame;
+  let mobileObserver;
+  let cardHeight = 0;
+  let stickyTop = 0;
+  let stepGap = 32;
+  let normalTops = [];
+
+  steps.forEach((step, index) => {
+    step.style.setProperty('--project-index', index);
+    step.style.setProperty('--project-layer', index + 1);
+  });
+
+  function updateStack() {
+    motionFrame = undefined;
+    if (!enabled) return;
+    // Read positions before writing transforms; sticky wrappers never scale.
+    const tops = steps.map(step => step.getBoundingClientRect().top);
+    cards.forEach((card, index) => {
+      let depth = 0;
+      for (let next = index + 1; next < cards.length; next++) {
+        const target = stickyTop + next * stepGap;
+        depth += Math.max(0, Math.min(1, (target + cardHeight - tops[next]) / cardHeight));
+      }
+      card.style.setProperty('--stack-scale', (1 - depth * .018).toFixed(4));
+    });
+  }
+
+  function scheduleMotion() {
+    if (enabled && motionFrame === undefined) motionFrame = requestAnimationFrame(updateStack);
+  }
+
+  function setMobileReveals() {
+    mobileObserver?.disconnect();
+    cards.forEach(card => card.classList.remove('project-revealing'));
+    if (desktop.matches || reduceMotion.matches || !('IntersectionObserver' in window)) return;
+    mobileObserver = new IntersectionObserver(entries => {
+      entries.forEach(({target, isIntersecting}) => {
+        if (!isIntersecting || revealed.has(target)) return;
+        revealed.add(target);
+        target.classList.add('project-revealing');
+        target.addEventListener('animationend', () => target.classList.remove('project-revealing'), {once: true});
+        mobileObserver.unobserve(target);
+      });
+    }, {threshold: .12, rootMargin: '0px 0px -24px 0px'});
+    cards.filter(card => !revealed.has(card)).forEach(card => mobileObserver.observe(card));
+  }
+
+  function measureStack() {
+    measureFrame = undefined;
+    enabled = false;
+    stack.classList.remove('stack-enabled', 'stack-measuring');
+    stack.style.removeProperty('--stack-card-height');
+    cards.forEach(card => card.style.removeProperty('--stack-scale'));
+    if (!desktop.matches || reduceMotion.matches) return;
+    stickyTop = Math.ceil((header?.getBoundingClientRect().bottom || 80) + 16);
+    stepGap = parseFloat(getComputedStyle(stack).getPropertyValue('--stack-step')) || 32;
+    cardHeight = Math.ceil(Math.max(...cards.map(card => card.getBoundingClientRect().height)));
+    // A short viewport or enlarged text gets the fully readable normal flow.
+    if (cardHeight + stickyTop + (cards.length - 1) * stepGap + 24 > innerHeight) return;
+    stack.style.setProperty('--stack-top', `${stickyTop}px`);
+    stack.style.setProperty('--stack-card-height', `${cardHeight}px`);
+    stack.classList.add('stack-enabled', 'stack-measuring');
+    normalTops = steps.map(step => step.getBoundingClientRect().top + scrollY);
+    stack.classList.remove('stack-measuring');
+    enabled = true;
+    updateStack();
+  }
+
+  function scheduleMeasure() {
+    if (measureFrame === undefined) measureFrame = requestAnimationFrame(measureStack);
+  }
+
+  function updateMode() {
+    setMobileReveals();
+    scheduleMeasure();
+  }
+
+  // Bring keyboard-focused controls out from underneath a later card.
+  stack.addEventListener('focusin', event => {
+    if (!enabled) return;
+    const index = steps.indexOf(event.target.closest('.project-step'));
+    if (index < 0) return;
+    const target = event.target.getBoundingClientRect();
+    const covered = steps.slice(index + 1).some(step => {
+      const rect = step.getBoundingClientRect();
+      return target.bottom > rect.top && target.top < rect.bottom;
+    });
+    if (covered || target.top < stickyTop || target.bottom > innerHeight) {
+      window.scrollTo({top: normalTops[index] - stickyTop - index * stepGap, behavior: 'instant'});
+    }
+  });
+
+  addEventListener('scroll', scheduleMotion, {passive: true});
+  addEventListener('resize', scheduleMeasure);
+  desktop.addEventListener('change', updateMode);
+  reduceMotion.addEventListener('change', updateMode);
+  document.fonts?.ready.then(scheduleMeasure);
+  updateMode();
+})();
+
 // A one-time entrance, with no hidden-content dependency on JavaScript.
 if ('IntersectionObserver' in window && !reduceMotion.matches) {
   const cardObserver = new IntersectionObserver(entries => {
