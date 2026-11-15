@@ -7,7 +7,7 @@ const projects = {
     role: 'Personal project · Product development',
     features: ['Built the browser workspace and source-linked task, decision, and question views.', 'Integrated on-device AI and cloud-provider modes with source validation and a labelled rules fallback.', 'Implemented local report storage, progress tracking, and Markdown export.'],
     live: 'https://catchup-workspace.vercel.app/', repo: 'https://github.com/guptavernit2-afk/CatchUp',
-    note: 'The portfolio illustration is a stylized preview. Visit the live app to explore the actual workspace.'
+    note: 'The card uses a 3D concept illustration. Visit the live app to explore the actual workspace.'
   },
   descent: {
     number: '02', category: 'INTERACTIVE LEARNING', name: 'DescentLab',
@@ -39,7 +39,7 @@ const projects = {
     features: ['Implemented the local HTTP engine API with validated actions, response allowlists, and serialized execution.', 'Added the run lifecycle, collision retry accounting, reset behavior, and private delivery evaluation.', 'Contributed explicit decision limits and fixes to recovery, assessed starts, and opt-in POV capture ownership.'],
     repo: 'https://github.com/parasmani-dev/hackoween',
     evidence: [{label: 'Engine API · PR #7', url: 'https://github.com/parasmani-dev/hackoween/pull/7'}, {label: 'Decision limits · PR #13', url: 'https://github.com/parasmani-dev/hackoween/pull/13'}, {label: 'Recovery & capture · PR #18', url: 'https://github.com/parasmani-dev/hackoween/pull/18'}],
-    note: 'Team-built simulation based on an upstream foundation. Simulator, agent, interface, and recording work were shared across teammates; the contributions above describe my engine and integration work. The card is an illustration, not a simulation capture.'
+    note: 'Team-built simulation based on an upstream foundation. Simulator, agent, interface, and recording work were shared across teammates; the contributions above describe my engine and integration work. The card uses a 3D concept illustration, not a simulation capture.'
   },
   avertiq: {
     number: 'WIP', category: 'CURRENTLY BUILDING', name: 'Avertiq',

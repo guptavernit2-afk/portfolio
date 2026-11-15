@@ -9,3 +9,5 @@ The About portrait is Vernit Gupta's [public GitHub profile picture](https://ava
 The DescentLab screenshot and brand mark are from [Vernit Gupta's DescentLab repository](https://github.com/guptavernit2-afk/descent-lab/tree/5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc). The MediWatch screenshot is from its [repository](https://github.com/guptavernit2-afk/MediWatch).
 
 Avertiq's `dist/assets/avertiq-scenario-3d.jpg` was generated for this portfolio with the built-in `image_gen` tool on 15 November 2026. It is labelled concept artwork. See [the generation prompt and provenance](docs/avertiq-illustration.md).
+
+CatchUp's `dist/assets/catchup-clarity-3d.jpg` and Rover Fetch's `dist/assets/rover-fetch-3d.jpg` were generated with the built-in `image_gen` tool on 15 November 2026 to match the Avertiq illustration. Both are labelled concept artwork. See [the generation prompts and provenance](docs/project-3d-previews.md).
