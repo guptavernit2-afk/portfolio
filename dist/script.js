@@ -7,8 +7,7 @@ const projects = {
     role: 'Personal project · Product development',
     features: ['Built the browser workspace and source-linked task, decision, and question views.', 'Integrated on-device AI and cloud-provider modes with source validation and a labelled rules fallback.', 'Implemented local report storage, progress tracking, and Markdown export.'],
     live: 'https://catchup-workspace.vercel.app/', repo: 'https://github.com/guptavernit2-afk/CatchUp',
-    preview: {src: 'catchup-workspace.jpg', width: 920, height: 575, alt: 'CatchUp report showing task counts, a summary, and decisions.', caption: 'Actual workspace · Built-in sample conversation · Instant Rules mode'},
-    note: 'The preview shows the real workspace using its built-in sample conversation in Instant Rules mode.'
+    note: 'The portfolio illustration is a stylized preview. Visit the live app to explore the actual workspace.'
   },
   descent: {
     number: '02', category: 'INTERACTIVE LEARNING', name: 'DescentLab',
@@ -20,8 +19,7 @@ const projects = {
     live: 'https://descent-lab.vercel.app/',
     repo: 'https://github.com/guptavernit2-afk/descent-lab',
     evidence: [{label: 'Architecture & engine', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/architecture.md'}, {label: 'From first-year project to platform', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/project-notes.md'}],
-    preview: {src: 'descentlab-workspace.jpg', width: 1145, height: 716, alt: 'DescentLab loss surface, optimizer paths, and experiment controls.', caption: 'Actual application · Screenshot from the project repository'},
-    note: 'The preview shows the actual application. These are educational two-parameter experiments, not neural-network training benchmarks or a universal ranking of optimizers.'
+    note: 'The card shows the actual application. These are educational two-parameter experiments, not neural-network training benchmarks or a universal ranking of optimizers.'
   },
   mediwatch: {
     number: '03', category: 'BACKEND & DATA', name: 'MediWatch',
@@ -31,7 +29,6 @@ const projects = {
     features: ['Rebuilt an early in-memory dashboard around stored patient histories, readings, notes, and alert acknowledgements.', 'Added typed validation and explicit, on-demand summaries with a rules-based fallback.', 'Implemented checked SQLite backups and safe restore tools, supported by regression tests and CI.'],
     live: 'https://mediwatch-ai.onrender.com',
     repo: 'https://github.com/guptavernit2-afk/MediWatch',
-    preview: {src: 'mediwatch-workspace.jpg', width: 1147, height: 717, alt: 'MediWatch summary cards, vital trends, and patient-status chart.', caption: 'Actual application · Fictional demo records'},
     note: 'Educational demonstration with fictional records, not a medical device. The hosted demo uses ephemeral storage; persistence across redeployments is not guaranteed.'
   },
   rover: {
@@ -42,8 +39,7 @@ const projects = {
     features: ['Implemented the local HTTP engine API with validated actions, response allowlists, and serialized execution.', 'Added the run lifecycle, collision retry accounting, reset behavior, and private delivery evaluation.', 'Contributed explicit decision limits and fixes to recovery, assessed starts, and opt-in POV capture ownership.'],
     repo: 'https://github.com/parasmani-dev/hackoween',
     evidence: [{label: 'Engine API · PR #7', url: 'https://github.com/parasmani-dev/hackoween/pull/7'}, {label: 'Decision limits · PR #13', url: 'https://github.com/parasmani-dev/hackoween/pull/13'}, {label: 'Recovery & capture · PR #18', url: 'https://github.com/parasmani-dev/hackoween/pull/18'}],
-    preview: {src: 'rover-simulator.jpg', width: 1280, height: 800, alt: 'Rover Fetch simulator arena with a rover, obstacles, and drop zone.', caption: 'Actual simulator · Team repository capture'},
-    note: 'Team-built simulation based on an upstream foundation. Simulator, agent, interface, and recording work were shared across teammates; the contributions above describe my engine and integration work. The preview is an actual simulator capture from the team repository.'
+    note: 'Team-built simulation based on an upstream foundation. Simulator, agent, interface, and recording work were shared across teammates; the contributions above describe my engine and integration work. The card is an illustration, not a simulation capture.'
   },
   avertiq: {
     number: 'WIP', category: 'CURRENTLY BUILDING', name: 'Avertiq',
@@ -53,7 +49,6 @@ const projects = {
     features: ['Developing saved incident inputs, immutable revision snapshots, and assessment job history.', 'Adding version checks, retry handling, export provenance, and verified local backup/recovery workflows.', 'Building checked research handoffs, comparison reports, and explicit reinspection of archived records.'],
     repo: 'https://github.com/guptavernit2-afk/Avertiq_',
     evidence: [{label: 'Backend implementation notes', url: 'https://github.com/guptavernit2-afk/Avertiq_/blob/main/docs/BACKEND_MILESTONE.md'}],
-    preview: {src: 'avertiq-workspace.jpg', width: 1200, height: 750, alt: 'Avertiq D-001 training dashboard with incident inputs and geographic map.', caption: 'Actual training dashboard · Illustrative demo · Map © OpenStreetMap contributors; terrain: Mapterhorn'},
     note: 'Training and research work in progress. Illustrative dashboard results are not validated physical hazard predictions or operational emergency guidance.'
   }
 };
@@ -65,7 +60,7 @@ function openProject(key) {
   const p = projects[key];
   if (!p) return;
   previousFocus = document.activeElement;
-  dialogContent.innerHTML = `<p class="eyebrow muted">${p.number} / ${p.category}</p><h2 id="dialog-title">${p.name}<span class="blue">.</span></h2><p class="dialog-lead">${p.lead}</p><p class="dialog-description">${p.description}</p>${p.preview ? `<figure class="dialog-preview"><img src="./assets/${p.preview.src}" width="${p.preview.width}" height="${p.preview.height}" alt="${p.preview.alt}" decoding="async"><figcaption><span>${p.preview.caption}</span><a href="./assets/${p.preview.src}" target="_blank" rel="noopener noreferrer">View full image ↗</a></figcaption></figure>` : ''}<div class="dialog-facts"><div><span>BUILT WITH</span><p>${p.stack}</p></div><div><span>MY ROLE</span><p>${p.role}</p></div></div><h3 class="dialog-section-title">My contribution</h3><ul class="dialog-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>${p.evidence ? `<div class="dialog-evidence"><span class="eyebrow muted">EXPLORE THE WORK</span>${p.evidence.map(e => `<a class="text-link" href="${e.url}" target="_blank" rel="noopener noreferrer">${e.label} ↗</a>`).join('')}</div>` : ''}<div class="dialog-actions">${p.live ? `<a class="button button-dark" href="${p.live}" target="_blank" rel="noopener noreferrer">Explore live project <span>↗</span></a>` : ''}<a class="${p.live ? 'text-link' : 'button button-dark'}" href="${p.repo}" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a></div><p class="dialog-note">${p.note}</p>`;
+  dialogContent.innerHTML = `<p class="eyebrow muted">${p.number} / ${p.category}</p><h2 id="dialog-title">${p.name}<span class="blue">.</span></h2><p class="dialog-lead">${p.lead}</p><p class="dialog-description">${p.description}</p><div class="dialog-facts"><div><span>BUILT WITH</span><p>${p.stack}</p></div><div><span>MY ROLE</span><p>${p.role}</p></div></div><h3 class="dialog-section-title">My contribution</h3><ul class="dialog-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>${p.evidence ? `<div class="dialog-evidence"><span class="eyebrow muted">EXPLORE THE WORK</span>${p.evidence.map(e => `<a class="text-link" href="${e.url}" target="_blank" rel="noopener noreferrer">${e.label} ↗</a>`).join('')}</div>` : ''}<div class="dialog-actions">${p.live ? `<a class="button button-dark" href="${p.live}" target="_blank" rel="noopener noreferrer">Explore live project <span>↗</span></a>` : ''}<a class="${p.live ? 'text-link' : 'button button-dark'}" href="${p.repo}" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a></div><p class="dialog-note">${p.note}</p>`;
   dialog.showModal();
 }
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));

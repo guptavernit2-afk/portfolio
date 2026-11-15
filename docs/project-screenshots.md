@@ -1,5 +1,7 @@
 # Real project previews
 
+Historical record: this preview treatment was rolled back to the project visuals from `c804f2a`. The rest of the portfolio design and content were preserved. The captures below remain as unused reference assets.
+
 Updated 15 November 2026. All five generated project illustrations have been replaced with authentic captures. Only rectangular crops and JPEG encoding (quality 93) were applied; interface content, numbers, colours, and results were not redrawn or generated.
 
 The cards share a straight, neutral frame, a project label, and an explicit description of the captured state. Pastel colour remains in the surrounding card. Project dialogs show the image again and link to its full-resolution file. There is no decorative image zoom or rotation.
