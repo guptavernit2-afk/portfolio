@@ -4,6 +4,10 @@ An independent, responsive portfolio direction. The existing portfolio in the pa
 
 Run `npm run dev` in this folder and open http://127.0.0.1:4175. The static site is in `dist/`; no dependency installation or build is needed. `npm run check` validates JavaScript syntax.
 
+## Vercel deployment
+
+Import `guptavernit2-afk/portfolio` in Vercel with the repository root as the Root Directory and `main` as the Production Branch. `vercel.json` selects the Other framework preset, skips dependency installation, runs the JavaScript syntax check, and publishes only `dist/`. No environment variables are required. Once connected, pushes to `main` deploy the production site automatically.
+
 ## Content
 
 Name, Bangalore location, CS background, social links, and featured projects were drawn from Vernit's public GitHub profile and repository READMEs on 15 November 2026:
