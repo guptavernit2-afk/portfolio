@@ -19,7 +19,7 @@ const projects = {
     live: 'https://descent-lab.vercel.app/',
     repo: 'https://github.com/guptavernit2-afk/descent-lab',
     evidence: [{label: 'Architecture & engine', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/architecture.md'}, {label: 'From first-year project to platform', url: 'https://github.com/guptavernit2-afk/descent-lab/blob/main/docs/project-notes.md'}],
-    note: 'The card shows the actual application. These are educational two-parameter experiments, not neural-network training benchmarks or a universal ranking of optimizers.'
+    note: 'The card uses a 3D concept illustration. The live app contains educational two-parameter experiments, not neural-network training benchmarks or a universal ranking of optimizers.'
   },
   mediwatch: {
     number: '03', category: 'BACKEND & DATA', name: 'MediWatch',
@@ -29,7 +29,7 @@ const projects = {
     features: ['Rebuilt an early in-memory dashboard around stored patient histories, readings, notes, and alert acknowledgements.', 'Added typed validation and explicit, on-demand summaries with a rules-based fallback.', 'Implemented checked SQLite backups and safe restore tools, supported by regression tests and CI.'],
     live: 'https://mediwatch-ai.onrender.com',
     repo: 'https://github.com/guptavernit2-afk/MediWatch',
-    note: 'Educational demonstration with fictional records, not a medical device. The hosted demo uses ephemeral storage; persistence across redeployments is not guaranteed.'
+    note: 'The card uses a 3D concept illustration. Educational demonstration with fictional records, not a medical device. The hosted demo uses ephemeral storage; persistence across redeployments is not guaranteed.'
   },
   rover: {
     number: '04', category: 'TEAM PROJECT', name: 'Rover Fetch',
