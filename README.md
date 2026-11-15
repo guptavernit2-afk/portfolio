@@ -25,6 +25,8 @@ About uses Vernit's GitHub profile photo in a circular frame and a biography gro
 
 The hero pairs its blue interactive character with a warm pastel art card, project and GitHub links, and an Avertiq workbench shortcut. The sticky navigation highlights the current section. On small screens it becomes a coloured disclosure menu with Escape dismissal, anchor focus handling, and an always-visible link fallback when JavaScript is unavailable.
 
+Phone layouts use a compact two-column menu, shorter hero artwork and project previews, readable contribution panels, and 44–48px navigation/action targets. Project details open as a scrollable sheet with a persistent close button, background scroll locking, and focus restoration. The menu also closes when focus leaves it or the wordmark is selected. Responsive checks cover 320px, 390px and 430px phone widths, short landscape screens, and the desktop layout.
+
 DescentLab's card and contribution dialog were checked against its README, architecture guide, project history, and package manifest. Its actual application screenshot and brand mark come from commit `5dca1c20c6ff1b4411d3ac9227f4c0d8dbbe18fc`. Skill groups follow the GitHub profile stack, supplemented by TypeScript, SQLite, Vite, Vitest, Canvas, MapLibre, and Drizzle from the featured projects. Icons are served locally; attribution is in `THIRD_PARTY_NOTICES.md`.
 
 Project and contribution cards use one-time entrance animations and pointer hover effects. Reduced-motion preferences disable these effects, and content remains visible without JavaScript.

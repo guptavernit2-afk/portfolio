@@ -81,6 +81,10 @@ if (header && navigation && menuToggle) {
   header.classList.add('nav-ready');
   menuToggle.hidden = false;
   menuToggle.addEventListener('click', () => setMenuOpen(!header.classList.contains('is-open')));
+  header.querySelector('.wordmark').addEventListener('click', () => setMenuOpen(false));
+  header.addEventListener('focusout', event => {
+    if (event.relatedTarget && !header.contains(event.relatedTarget)) setMenuOpen(false);
+  });
   navigation.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link) return;
