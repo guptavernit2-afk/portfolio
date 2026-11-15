@@ -62,10 +62,21 @@ button.text-link { background: transparent; padding-inline: 0; }
 .work-footer { margin-top: 26px; gap: 20px; }
 .work-footer > .hand-note { font-size: 14px; color: #737868; }
 
-/* Selected work only: native desktop stacking, quiet phone entrances. */
+/* Selected work only: native stacking with room to read every card. */
 #work .project-stack { --stack-step: 32px; display: grid; grid-template-columns: minmax(0,1fr); gap: 28px; isolation: isolate; }
 #work .project-step { min-width: 0; }
 #work .project-step > .project-card { height: 100%; }
+#work .project-stack.stack-enabled { gap: clamp(52px,10vh,100px); }
+#work .project-stack.stack-enabled::after { content: ''; height: clamp(40px,8vh,80px); pointer-events: none; }
+#work .stack-enabled .project-step { position: sticky; top: calc(var(--stack-top) + var(--project-index) * var(--stack-step)); z-index: var(--project-layer); }
+#work .stack-enabled .project-card { min-height: var(--stack-card-height); transform: scale(var(--stack-scale,1)); transform-origin: center top; transition: box-shadow .2s ease; box-shadow: 0 -3px 22px -12px #35312538; }
+#work .stack-enabled .project-card:hover { transform: scale(var(--stack-scale,1)); }
+#work .stack-measuring .project-step { position: static; }
+@media(max-width:979px) {
+  #work .project-stack { --stack-step: 18px; }
+  #work .project-stack.stack-enabled { gap: clamp(36px,7svh,60px); }
+  #work .project-stack.stack-enabled::after { height: clamp(32px,8svh,64px); }
+}
 @media(min-width:980px) {
   #work .project-card { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); grid-template-rows: auto 1fr; gap: 0 28px; padding: 0 24px 24px; align-items: center; }
   #work .card-topline { grid-column: 1 / -1; padding: 18px 2px 0; align-self: start; }
@@ -75,22 +86,10 @@ button.text-link { background: transparent; padding-inline: 0; }
   #work .project-work { margin-top: 16px; padding-top: 14px; }
   #work .stack-tags { margin-top: 14px; }
   #work .card-actions { margin-top: 18px; padding: 14px 0 0; }
-  #work .project-stack.stack-enabled { gap: clamp(52px,10vh,100px); }
-  #work .project-stack.stack-enabled::after { content: ''; height: clamp(40px,8vh,80px); pointer-events: none; }
-  #work .stack-enabled .project-step { position: sticky; top: calc(var(--stack-top) + var(--project-index) * var(--stack-step)); z-index: var(--project-layer); }
-  #work .stack-enabled .project-card { min-height: var(--stack-card-height); transform: scale(var(--stack-scale,1)); transform-origin: center top; transition: box-shadow .2s ease; box-shadow: 0 -3px 22px -12px #35312538; }
-  #work .stack-enabled .project-card:hover { transform: scale(var(--stack-scale,1)); }
-  #work .stack-measuring .project-step { position: static; }
-}
-@keyframes project-soft-reveal {
-  from { opacity: .45; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media(max-width:979px) and (prefers-reduced-motion:no-preference) {
-  #work .project-card.project-revealing { animation: project-soft-reveal .55s cubic-bezier(.2,.7,.2,1) both; }
 }
 @media(prefers-reduced-motion:reduce) {
-  #work .project-card { animation: none; }
+  #work .stack-enabled .project-step { position: static; }
+  #work .stack-enabled .project-card { transform: none; }
 }
 
 /* The ongoing project has its own quieter workbench. */

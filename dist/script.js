@@ -197,13 +197,12 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
   const steps = [...stack.querySelectorAll('.project-step')];
   const cards = steps.map(step => step.querySelector('.project-card'));
   const desktop = matchMedia('(min-width: 980px)');
-  const revealed = new WeakSet();
   let enabled = false;
   let measureFrame;
   let motionFrame;
-  let mobileObserver;
   let cardHeight = 0;
   let stickyTop = 0;
+  let headerClearance = 0;
   let stepGap = 32;
   let normalTops = [];
 
@@ -223,28 +222,12 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
         const target = stickyTop + next * stepGap;
         depth += Math.max(0, Math.min(1, (target + cardHeight - tops[next]) / cardHeight));
       }
-      card.style.setProperty('--stack-scale', (1 - depth * .018).toFixed(4));
+      card.style.setProperty('--stack-scale', (1 - depth * (desktop.matches ? .018 : .012)).toFixed(4));
     });
   }
 
   function scheduleMotion() {
     if (enabled && motionFrame === undefined) motionFrame = requestAnimationFrame(updateStack);
-  }
-
-  function setMobileReveals() {
-    mobileObserver?.disconnect();
-    cards.forEach(card => card.classList.remove('project-revealing'));
-    if (desktop.matches || reduceMotion.matches || !('IntersectionObserver' in window)) return;
-    mobileObserver = new IntersectionObserver(entries => {
-      entries.forEach(({target, isIntersecting}) => {
-        if (!isIntersecting || revealed.has(target)) return;
-        revealed.add(target);
-        target.classList.add('project-revealing');
-        target.addEventListener('animationend', () => target.classList.remove('project-revealing'), {once: true});
-        mobileObserver.unobserve(target);
-      });
-    }, {threshold: .12, rootMargin: '0px 0px -24px 0px'});
-    cards.filter(card => !revealed.has(card)).forEach(card => mobileObserver.observe(card));
   }
 
   function measureStack() {
@@ -253,12 +236,16 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
     stack.classList.remove('stack-enabled', 'stack-measuring');
     stack.style.removeProperty('--stack-card-height');
     cards.forEach(card => card.style.removeProperty('--stack-scale'));
-    if (!desktop.matches || reduceMotion.matches) return;
-    stickyTop = Math.ceil((header?.getBoundingClientRect().bottom || 80) + 16);
+    if (reduceMotion.matches) return;
+    headerClearance = Math.ceil((header?.getBoundingClientRect().bottom || 80) + (desktop.matches ? 16 : 12));
+    stickyTop = headerClearance;
     stepGap = parseFloat(getComputedStyle(stack).getPropertyValue('--stack-step')) || 32;
     cardHeight = Math.ceil(Math.max(...cards.map(card => card.getBoundingClientRect().height)));
-    // A short viewport or enlarged text gets the fully readable normal flow.
-    if (cardHeight + stickyTop + (cards.length - 1) * stepGap + 24 > innerHeight) return;
+    const availableTop = innerHeight - cardHeight - (cards.length - 1) * stepGap - (desktop.matches ? 24 : 16);
+    if (desktop.matches && availableTop < stickyTop) return;
+    // Tall phone cards scroll through before pinning, so their actions stay reachable.
+    // A negative top is intentional on short screens or with enlarged text.
+    if (!desktop.matches) stickyTop = Math.min(stickyTop, availableTop);
     stack.style.setProperty('--stack-top', `${stickyTop}px`);
     stack.style.setProperty('--stack-card-height', `${cardHeight}px`);
     stack.classList.add('stack-enabled', 'stack-measuring');
@@ -272,11 +259,6 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
     if (measureFrame === undefined) measureFrame = requestAnimationFrame(measureStack);
   }
 
-  function updateMode() {
-    setMobileReveals();
-    scheduleMeasure();
-  }
-
   // Bring keyboard-focused controls out from underneath a later card.
   stack.addEventListener('focusin', event => {
     if (!enabled) return;
@@ -287,17 +269,24 @@ if (copyEmailButton && contactEmail && copyStatus && navigator.clipboard?.writeT
       const rect = step.getBoundingClientRect();
       return target.bottom > rect.top && target.top < rect.bottom;
     });
-    if (covered || target.top < stickyTop || target.bottom > innerHeight) {
+    if (covered || target.top < headerClearance || target.bottom > innerHeight - 16) {
       window.scrollTo({top: normalTops[index] - stickyTop - index * stepGap, behavior: 'instant'});
+      // A tall phone card may pin above the header; reveal the focused control too.
+      const focused = event.target.getBoundingClientRect();
+      if (focused.top < headerClearance) {
+        window.scrollTo({top: scrollY + focused.top - headerClearance, behavior: 'instant'});
+      } else if (focused.bottom > innerHeight - 16) {
+        window.scrollTo({top: scrollY + focused.bottom - innerHeight + 16, behavior: 'instant'});
+      }
     }
   });
 
   addEventListener('scroll', scheduleMotion, {passive: true});
   addEventListener('resize', scheduleMeasure);
-  desktop.addEventListener('change', updateMode);
-  reduceMotion.addEventListener('change', updateMode);
+  desktop.addEventListener('change', scheduleMeasure);
+  reduceMotion.addEventListener('change', scheduleMeasure);
   document.fonts?.ready.then(scheduleMeasure);
-  updateMode();
+  scheduleMeasure();
 })();
 
 // A one-time entrance, with no hidden-content dependency on JavaScript.
