@@ -1,0 +1,9 @@
+{
+  "name": "vernit-warm-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node --check dist/script.js"
+  }
+}
