@@ -4,28 +4,40 @@ const projects = {
     lead: 'Less catching up. More moving forward.',
     description: 'A browser workspace that turns long conversations into source-linked briefings, decisions, tasks, and unanswered questions. Each finding keeps its context, so you can go back to what was actually said.',
     stack: 'JavaScript · WebLLM · WebGPU · IndexedDB',
-    focus: 'Conversation analysis & local AI',
-    features: ['Choose on-device AI, instant rules, or your own cloud provider.', 'Review task ownership, decisions, and blockers alongside their source messages.', 'Save catch-ups locally, track progress, and export Markdown reports.'],
+    role: 'Personal project · Product development',
+    features: ['Built the browser workspace and source-linked task, decision, and question views.', 'Integrated on-device AI and cloud-provider modes with source validation and a labelled rules fallback.', 'Implemented local report storage, progress tracking, and Markdown export.'],
     live: 'https://catchup-workspace.vercel.app/', repo: 'https://github.com/guptavernit2-afk/CatchUp',
     note: 'The portfolio illustration is a stylized preview. Visit the live app to explore the actual workspace.'
   },
-  descent: {
-    number: '02', category: 'INTERACTIVE LEARNING', name: 'DescentLab',
-    lead: 'See every step. Understand every optimizer.',
-    description: 'An educational optimization lab that makes abstract math visible. Explore loss surfaces, compare optimizer trajectories, and inspect the arithmetic behind every update — all in the browser.',
-    stack: 'React · TypeScript · Vite', focus: 'Numerical experiments & visualization',
-    features: ['Compare six optimizers, including Gradient Descent, Momentum, and Adam.', 'Explore guided lessons, live model fitting, and learning-rate sensitivity.', 'Save experiments and export CSV traces, JSON configurations, or annotated figures.'],
-    live: 'https://descent-lab.vercel.app/', repo: 'https://github.com/guptavernit2-afk/descent-lab',
-    note: 'The portfolio illustration is a stylized preview. The lab uses educational two-parameter experiments, not neural-network training benchmarks.'
-  },
   mediwatch: {
-    number: '03', category: 'BACKEND & DATA', name: 'MediWatch',
+    number: '02', category: 'BACKEND & DATA', name: 'MediWatch',
     lead: 'Every signal. A clearer picture.',
     description: 'An educational patient-monitoring workspace that brings vital trends, persistent history, and reviewable alerts into one readable interface. Built around a FastAPI backend and SQLite storage.',
-    stack: 'Python · FastAPI · SQLite · JavaScript', focus: 'Persistent data & monitoring workflows',
-    features: ['Explore a patient directory with fictional demonstration records.', 'Review timestamped readings, notes, and persistent alert acknowledgements.', 'Export CSV snapshots and request optional AI summaries.'],
+    stack: 'Python · FastAPI · SQLite · JavaScript', role: 'Personal project · Backend & application development',
+    features: ['Rebuilt an early in-memory dashboard around stored patient histories, readings, notes, and alert acknowledgements.', 'Added typed validation and explicit, on-demand summaries with a rules-based fallback.', 'Implemented checked SQLite backups and safe restore tools, supported by regression tests and CI.'],
+    live: 'https://mediwatch-ai.onrender.com',
     repo: 'https://github.com/guptavernit2-afk/MediWatch',
-    note: 'Educational demonstration only. Fictional records and illustrative thresholds; not a medical device or a substitute for clinical judgment.'
+    note: 'Educational demonstration with fictional records, not a medical device. The hosted demo uses ephemeral storage; persistence across redeployments is not guaranteed.'
+  },
+  rover: {
+    number: '03', category: 'TEAM PROJECT', name: 'Rover Fetch',
+    lead: 'Reliable control behind a rover simulation.',
+    description: 'A team hackathon project, hosted in the hackoween repository, that connects a rover simulator with an agent and run controls. My work focused on the engine boundary: how actions run, fail, recover, and finish.',
+    stack: 'Python · HTTP APIs · Webots integration', role: 'Team contributor · Engine API & run control',
+    features: ['Implemented the local HTTP engine API with validated actions, response allowlists, and serialized execution.', 'Added the run lifecycle, collision retry accounting, reset behavior, and private delivery evaluation.', 'Contributed explicit decision limits and fixes to recovery, assessed starts, and opt-in POV capture ownership.'],
+    repo: 'https://github.com/parasmani-dev/hackoween',
+    evidence: [{label: 'Engine API · PR #7', url: 'https://github.com/parasmani-dev/hackoween/pull/7'}, {label: 'Decision limits · PR #13', url: 'https://github.com/parasmani-dev/hackoween/pull/13'}, {label: 'Recovery & capture · PR #18', url: 'https://github.com/parasmani-dev/hackoween/pull/18'}],
+    note: 'Team-built simulation based on an upstream foundation. Simulator, agent, interface, and recording work were shared across teammates; the contributions above describe my engine and integration work. The card is an illustration, not a simulation capture.'
+  },
+  avertiq: {
+    number: 'WIP', category: 'CURRENTLY BUILDING', name: 'Avertiq',
+    lead: 'A more traceable picture of complex incidents.',
+    description: 'An ongoing chemical-transport training workspace with geographic context and explicit evidence labels. Application development and numerical research are separate tracks; current dashboard assessments are illustrative.',
+    stack: 'React · TypeScript · MapLibre · SQLite / Drizzle · Python research', role: 'Ongoing research & application development',
+    features: ['Developing saved incident inputs, immutable revision snapshots, and assessment job history.', 'Adding version checks, retry handling, export provenance, and verified local backup/recovery workflows.', 'Building checked research handoffs, comparison reports, and explicit reinspection of archived records.'],
+    repo: 'https://github.com/guptavernit2-afk/Avertiq_',
+    evidence: [{label: 'Backend implementation notes', url: 'https://github.com/guptavernit2-afk/Avertiq_/blob/main/docs/BACKEND_MILESTONE.md'}],
+    note: 'Training and research work in progress. Illustrative dashboard results are not validated physical hazard predictions or operational emergency guidance.'
   }
 };
 
@@ -36,7 +48,7 @@ function openProject(key) {
   const p = projects[key];
   if (!p) return;
   previousFocus = document.activeElement;
-  dialogContent.innerHTML = `<p class="eyebrow muted">${p.number} / ${p.category}</p><h2 id="dialog-title">${p.name}<span class="blue">.</span></h2><p class="dialog-lead">${p.lead}</p><p class="dialog-description">${p.description}</p><div class="dialog-facts"><div><span>BUILT WITH</span><p>${p.stack}</p></div><div><span>THE FOCUS</span><p>${p.focus}</p></div></div><ul class="dialog-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul><div class="dialog-actions">${p.live ? `<a class="button button-dark" href="${p.live}" target="_blank" rel="noopener noreferrer">Explore live project <span>↗</span></a>` : ''}<a class="${p.live ? 'text-link' : 'button button-dark'}" href="${p.repo}" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a></div><p class="dialog-note">${p.note}</p>`;
+  dialogContent.innerHTML = `<p class="eyebrow muted">${p.number} / ${p.category}</p><h2 id="dialog-title">${p.name}<span class="blue">.</span></h2><p class="dialog-lead">${p.lead}</p><p class="dialog-description">${p.description}</p><div class="dialog-facts"><div><span>BUILT WITH</span><p>${p.stack}</p></div><div><span>MY ROLE</span><p>${p.role}</p></div></div><h3 class="dialog-section-title">My contribution</h3><ul class="dialog-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>${p.evidence ? `<div class="dialog-evidence"><span class="eyebrow muted">EXPLORE THE WORK</span>${p.evidence.map(e => `<a class="text-link" href="${e.url}" target="_blank" rel="noopener noreferrer">${e.label} ↗</a>`).join('')}</div>` : ''}<div class="dialog-actions">${p.live ? `<a class="button button-dark" href="${p.live}" target="_blank" rel="noopener noreferrer">Explore live project <span>↗</span></a>` : ''}<a class="${p.live ? 'text-link' : 'button button-dark'}" href="${p.repo}" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a></div><p class="dialog-note">${p.note}</p>`;
   dialog.showModal();
 }
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => openProject(button.dataset.project)));
