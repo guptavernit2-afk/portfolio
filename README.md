@@ -21,7 +21,7 @@ Name, Bangalore location, CS background, social links, and featured projects wer
 
 MediWatch uses the actual screenshot from its repository's `docs/images/overview.png` (fictional demo records). CatchUp, Rover Fetch, and Avertiq use labelled HTML/SVG editorial illustrations. SurakshaMitra is intentionally omitted pending a later content decision.
 
-About uses a decorative initials card and biography grounded in the GitHub profile. Contact includes email, LinkedIn, and GitHub links verified against the profile's public Connect section on 15 November 2026. The email opens the visitor's mail app; the copy control appears when the Clipboard API is available and reports failures without removing the address. No message is submitted by the portfolio itself.
+About uses Vernit's GitHub profile photo in a circular frame and a biography grounded in the GitHub profile. The photo is stored locally, with its framing controlled in CSS. Contact includes email, LinkedIn, and GitHub links verified against the profile's public Connect section on 15 November 2026. The email opens the visitor's mail app; the copy control appears when the Clipboard API is available and reports failures without removing the address. No message is submitted by the portfolio itself.
 
 The hero pairs its blue interactive character with a warm pastel art card, project and GitHub links, and an Avertiq workbench shortcut. The sticky navigation highlights the current section. On small screens it becomes a coloured disclosure menu with Escape dismissal, anchor focus handling, and an always-visible link fallback when JavaScript is unavailable.
 
